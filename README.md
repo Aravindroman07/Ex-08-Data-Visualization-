@@ -18,153 +18,192 @@ Apply data visualization techniques to identify the patterns of the data.
 
 
 # CODE
+```
 #Reading the given dataset
+
 import pandas as pd
 df=pd.read_csv("Superstore.csv",encoding='unicode_escape')
+
 df.head()
+
 #Data Visualization using Seaborn
+
 import seaborn as sns
 from matplotlib import pyplot as plt
+
 #1.Line Plot
+
 plt.figure(figsize=(9,6))
 sns.lineplot(x="Segment",y="Region",data=df,marker='o')
 plt.xticks(rotation = 90)
+
 sns.lineplot(x='Ship Mode',y='Category', hue ="Segment",data=df)
+
 sns.lineplot(x="Category",y="Sales",data=df,marker='o')
+
 #2.Scatterplot
+
 sns.scatterplot(x='Category',y='Sub-Category',data=df)
+
 sns.scatterplot(x='Category', y='Sub-Category', hue ="Segment",data=df)
+
 plt.figure(figsize=(10,7))
 sns.scatterplot(x="Region",y="Sales",data=df)
 plt.xticks(rotation = 90)
+
 #3.Boxplot
+
 sns.boxplot(x="Sub-Category",y="Discount",data=df)
+
 sns.boxplot( x="Profit", y="Category",data=df)
+
 #4.Violin Plot
+
 sns.violinplot(x="Profit",data=df)
+
 #5.Barplot
+
 sns.barplot(x="Sub-Category",y="Sales",data=df)
 plt.xticks(rotation = 90)
+
 sns.barplot(x="Category",y="Sales",data=df)
 plt.xticks(rotation = 90)
+
 #6.Pointplot
+
 sns.pointplot(x=df["Quantity"],y=df["Discount"])
+
 #7.Count plot
+
 sns.countplot(x="Category",data=df)
+
 sns.countplot(x="Sub-Category",data=df)
+
 #8.Histogram
+
 sns.histplot(data=df,x ='Ship Mode',hue='Sub-Category')
+
 #9.KDE Plot
+
 sns.kdeplot(x="Profit", data = df,hue='Category')
+
 #Data Visualization Using MatPlotlib
+
 #1.Plot
+
 plt.plot(df['Category'], df['Sales'])
 plt.show()
+
 #2.Heatmap
+
 df.corr()
 plt.subplots(figsize=(12,7))
 sns.heatmap(df.corr(),annot=True)
+
 #3.Piechart
+
 df1=df.groupby(by=["Ship Mode"]).sum()
 labels=[]
 for i in df1.index:
-labels.append(i)
+    labels.append(i)
 colors=sns.color_palette("bright")
 plt.pie(df1["Sales"],labels=labels,autopct="%0.0f%%")
 plt.show()
+
 df3=df.groupby(by=["Category"]).sum()
 labels=[]
 for i in df3.index:
-labels.append(i)
+    labels.append(i) 
 plt.figure(figsize=(8,8))
 colors = sns.color_palette('pastel')
 plt.pie(df3["Profit"],colors = colors,labels=labels, autopct = '%0.0f%%')
 plt.show()
+
 #4.Histogram
+
 plt.hist(df["Sub-Category"],facecolor="peru",edgecolor="blue",bins=10)
 plt.show()
+
 #5.Bargraph
+
 plt.bar(df.index,df['Category'])
 plt.show()
+
 #6.Scatterplot
-OUPUT
-Reading the given dataset
-## Data Visualization Using Seaborn: ### 1.Line Plot
+
 plt.scatter(df["Region"],df["Profit"], c ="blue")
-plt.show()
+plt.show() 
+
 #7.Boxplot
+
 plt.boxplot(x="Sales",data=df)
 plt.show()
 ```
 # OUPUT
 ## Reading the given dataset
-<img width="595" alt="d1" src="https://user-images.githubusercontent.com/93427345/200100583-c061cccd-80d7-45bd-a21e-832bec8c604d.png">
+<img width="595" alt="171088128-126c7176-a343-4f0d-9775-be64ef025be9" src="https://user-images.githubusercontent.com/93992063/171088625-75b69a10-f573-44f7-9645-c3ce4ef77e5b.png">
 
-## Data Visualization Using Seaborn: 
+
+## Data Visualization Using Seaborn:
 ### 1.Line Plot
-<img width="336" alt="2d" src="https://user-images.githubusercontent.com/93427345/200100589-db6a3821-dc6f-4290-b405-e26c956aff23.png">
+<img width="336" alt="171088148-00745931-00a9-4e77-9652-bde07ec58041" src="https://user-images.githubusercontent.com/93992063/171088655-27e3a090-4760-4e29-b954-7759a445a8c1.png">
+<img width="314" alt="171088166-0622ed0d-983e-4fbb-9a07-ffde6ae73fbf" src="https://user-images.githubusercontent.com/93992063/171088668-5a814d59-6d67-4053-9d35-dc8d6221027a.png">
 
-<img width="314" alt="3" src="https://user-images.githubusercontent.com/93427345/200100592-af8f1900-fb5d-415f-bbe6-4087ec6e413b.png">
-
-<img width="258" alt="4" src="https://user-images.githubusercontent.com/93427345/200100613-2c30b4c1-0961-47e0-9bd1-c67ff09216d8.png">
+<img width="258" alt="171088179-9468b1ae-1975-4ddd-8c7d-15a62cde1105" src="https://user-images.githubusercontent.com/93992063/171088679-cdf26bb7-62f0-4ef9-8308-171a7a7a68ef.png">
 
 ### 2.Scatterplot
-<img width="293" alt="5" src="https://user-images.githubusercontent.com/93427345/200100620-d0c546de-cfca-4970-bcd8-a7eb6a6205d3.png">
+<img width="293" alt="171088199-43c1ab2b-8c36-4787-a25b-9fb447afb27a" src="https://user-images.githubusercontent.com/93992063/171088729-4528fb87-105b-4ad8-8c01-a090178862a6.png">
+<img width="284" alt="171088208-7f3a8cdd-e757-4d86-8366-8e7795a10be1" src="https://user-images.githubusercontent.com/93992063/171088737-abadff73-b2cb-4891-9485-5df3bec60db0.png">
 
-<img width="284" alt="6" src="https://user-images.githubusercontent.com/93427345/200100635-33756e5b-6086-404f-b72c-5f9a98e13bdb.png">
-
-<img width="408" alt="7" src="https://user-images.githubusercontent.com/93427345/200100645-9f6ab487-6331-4253-be7b-814c9948ef89.png">
+<img width="408" alt="171088221-0b5ce909-ea1b-4d11-b544-02a182ae71f8" src="https://user-images.githubusercontent.com/93992063/171088756-decdfb1a-0835-43e8-8fe8-3cdfcd89ed47.png">
 
 ### 3.Boxplot
-<img width="252" alt="8" src="https://user-images.githubusercontent.com/93427345/200100656-bc08abee-cf88-47c5-a155-425624a5a3bb.png">
-
-<img width="283" alt="9" src="https://user-images.githubusercontent.com/93427345/200100667-541ff07a-fc75-4fc0-936f-27b926d1a8af.png">
+<img width="252" alt="171088266-a16dba86-8fc1-4f39-a43e-8946245952ed" src="https://user-images.githubusercontent.com/93992063/171088805-74233b62-90e2-4af6-af2f-239e5b10d5d1.png">
+<img width="283" alt="171088275-5fc74eac-6c9c-4751-9a25-a6bb396b51b0" src="https://user-images.githubusercontent.com/93992063/171088821-f94c7dc4-aa1d-43c1-ab84-8d84af736efb.png">
 
 ### 4.Violin Plot
-<img width="229" alt="s1" src="https://user-images.githubusercontent.com/93427345/200100762-6c09c869-6c7f-429b-a0cd-ffd64dda7554.png">
+<img width="229" alt="171088288-b57cfa86-14ca-4da3-be85-2aedda3ef070" src="https://user-images.githubusercontent.com/93992063/171088926-239ae44b-4649-42ce-b52e-a6b26cc217f3.png">
 
 ### 5.Barplot
-<img width="362" alt="s2" src="https://user-images.githubusercontent.com/93427345/200100858-a20f42ea-1cce-42f1-a970-d049f819422a.png">
-
-<img width="248" alt="s3" src="https://user-images.githubusercontent.com/93427345/200100948-98980a44-838f-4686-ad20-7d0465c4785d.png">
+<img width="362" alt="171088300-2f65fe18-2157-4408-93b9-621db48d3fe5" src="https://user-images.githubusercontent.com/93992063/171088936-2cefc282-8343-445d-9545-8ba91f5c69d9.png">
+<img width="248" alt="171088309-f8fc728a-98de-46da-af45-5504501865a5" src="https://user-images.githubusercontent.com/93992063/171088941-cc06dd62-0713-4963-8470-b91fcfe03c57.png">
 
 ### 6.Pointplot
-<img width="258" alt="s4" src="https://user-images.githubusercontent.com/93427345/200101058-d5c3bce7-6981-4e0f-acb6-cc0074f86667.png">
+<img width="258" alt="171088319-54fd42f2-c10d-4696-ab1d-cf26b67876ab" src="https://user-images.githubusercontent.com/93992063/171089031-2815c863-58f8-49a0-a276-c82d18e013d5.png">
 
 ### 7.Count plot
-<img width="267" alt="s5" src="https://user-images.githubusercontent.com/93427345/200101076-0e904050-36f2-4290-8cad-750c0f221e91.png">
-
-<img width="258" alt="s6" src="https://user-images.githubusercontent.com/93427345/200101082-43c21474-2476-4a35-a893-77592c07052f.png">
+<img width="267" alt="171088340-ac5e9f66-7ecd-4fbc-b58f-0e8a9c854f58" src="https://user-images.githubusercontent.com/93992063/171089112-95028c42-efbb-48bc-a4f9-99bc774e506e.png">
+<img width="258" alt="171088373-3b644c23-eb34-4c62-9854-7beedc247c8e" src="https://user-images.githubusercontent.com/93992063/171089127-9b367b72-de86-4fb3-9ce4-4954afb16e90.png">
 
 ### 8.Histogram
-<img width="281" alt="s7" src="https://user-images.githubusercontent.com/93427345/200101106-5426b3ab-afb6-4b96-9f20-a916ddc794b4.png">
+<img width="281" alt="171088392-27dc5b70-ca70-4069-ac16-50edbcb51fb0" src="https://user-images.githubusercontent.com/93992063/171089170-f1167adb-d80c-4f26-853d-2795c0befc55.png">
 
 ### 9.KDE Plot
-<img width="252" alt="s8" src="https://user-images.githubusercontent.com/93427345/200101118-c31c202d-5bd5-488a-959e-a7002c53e509.png">
+<img width="252" alt="171088402-28a45721-eef1-44ae-8a71-8f1cdfc84371" src="https://user-images.githubusercontent.com/93992063/171089192-8ca525cc-0e90-4de8-b04a-de24abdce895.png">
 
 ## Data Visualization Using Matplotlib:
 ### 1.Plot
-<img width="268" alt="s9" src="https://user-images.githubusercontent.com/93427345/200101130-1b6f3888-2da1-4b41-9b81-8c97d25c2167.png">
+<img width="268" alt="171088777-b33aa92c-b4f2-4b2e-af45-c86899df03c9" src="https://user-images.githubusercontent.com/93992063/171089267-f747476e-4896-4f55-a2e1-63a31415293b.png">
 
 ### 2.Heatmap
-<img width="381" alt="s10" src="https://user-images.githubusercontent.com/93427345/200101138-62cf6fcd-8d1b-4df5-8240-23a286f1c49a.png">
+<img width="381" alt="171088793-a39c19c3-f481-4837-a9ab-c59bbbb80b72" src="https://user-images.githubusercontent.com/93992063/171089457-c8c4fc0a-1262-41f2-8d31-ffa71daa0ae6.png">
 
 ### 3.Piechart
-<img width="168" alt="ds1" src="https://user-images.githubusercontent.com/93427345/200101206-f9d598a1-20be-4754-a0fb-4b88292e15c0.png">
-
-<img width="288" alt="ds2" src="https://user-images.githubusercontent.com/93427345/200101224-18ed3b41-94a2-4e7b-ba0c-51b56e1263cc.png">
+<img width="168" alt="171088813-8407fd7d-2c62-41f5-9e0d-25242f9576ac" src="https://user-images.githubusercontent.com/93992063/171089653-0b9254e6-69e7-43bc-be30-7c787edf8216.png">
+<img width="288" alt="171088875-f1b23ed9-0c39-4061-aeeb-bd21c3943308" src="https://user-images.githubusercontent.com/93992063/171089725-6e50a256-7e7a-4162-a533-91fc1c913fc4.png">
 
 ### 4.Histogram
-<img width="245" alt="ds3" src="https://user-images.githubusercontent.com/93427345/200101234-330258e8-1eb4-44ee-9e6b-7cd3303eae5c.png">
+<img width="245" alt="171088893-37660289-6bfa-4274-94b9-f9c10373a8a4" src="https://user-images.githubusercontent.com/93992063/171089939-70d1d2b6-24a8-4fd2-aa4e-c1bfb516f403.png">
 
 ### 5.Bargraph
-<img width="279" alt="ds4" src="https://user-images.githubusercontent.com/93427345/200101243-03798c42-4324-4821-93a0-96598ae8023a.png">
+<img width="279" alt="171088899-506a8bfe-128b-44a6-aea9-6ad9d68d27e7" src="https://user-images.githubusercontent.com/93992063/171089907-bb79c79f-62b9-4539-a754-1205aab99ac7.png">
 
 ### 6.Scatterplot
-<img width="248" alt="ds5" src="https://user-images.githubusercontent.com/93427345/200101251-baceab8b-a91f-4409-b6a9-b5b16b3c9b66.png">
+<img width="248" alt="171088911-4bc14fcd-490e-40bc-a732-d8e733ca4713" src="https://user-images.githubusercontent.com/93992063/171089883-9d4ba8c0-d896-44e0-847c-c4ddb466c61c.png">
 
 ### 7.Boxplot
-<img width="261" alt="ds6" src="https://user-images.githubusercontent.com/93427345/200101270-0e0f80e3-3bad-4e35-a8d5-4d03d04f4433.png">
+
+<img width="261" alt="171088927-6bb49da4-25fe-4f10-8dab-11a1f0b68c88" src="https://user-images.githubusercontent.com/93992063/171089859-b1c8d695-4e4b-426e-9718-c84bdc1d75de.png">
 
 # RESULT
 Hence,Data Visualization is applied on the complex dataset using libraries like Seaborn and Matplotlib successfully and the data is saved to file.
